@@ -1,71 +1,162 @@
-# CodeIgniter 4 Application Starter
+# 📝 Personal Blog App
 
-## What is CodeIgniter?
+Aplikasi web blog dinamis berbasis **PHP 8.x** dan **CodeIgniter 4** sebagai tugas UTS mata kuliah Pengembangan Aplikasi Web Framework.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 🚀 Fitur
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+### Admin Panel
+- 🔐 Login & Logout Admin
+- 📊 Dashboard statistik (total post, published, draft, kategori)
+- ✍️ CRUD Post dengan Rich Text Editor (Quill.js)
+- 🏷️ Manajemen Kategori
+- 🖼️ Upload Thumbnail artikel
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### Halaman Publik
+- 🏠 Homepage dengan grid artikel
+- 📖 Halaman detail artikel
+- 🗂️ Filter artikel per kategori
+- 🔍 Search artikel
+- 📄 Pagination
 
-## Installation & updates
+---
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## 🛠️ Teknologi
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+| Teknologi | Versi |
+|-----------|-------|
+| PHP | 8.x |
+| CodeIgniter | 4.x |
+| MySQL | 8.x |
+| Bootstrap | 5.3 |
+| Quill.js | 1.3.6 |
 
-## Setup
+---
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## ⚙️ Cara Install
 
-## Important Change with index.php
+### 1. Clone Repository
+```bash
+git clone https://github.com/hananalfaruq/project3.git
+cd project3
+```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 2. Install Dependency
+```bash
+composer install
+```
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### 3. Konfigurasi Environment
+```bash
+cp env .env
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Edit file `.env`:
+```env
+CI_ENVIRONMENT = development
+app.baseURL = 'http://localhost:8080/'
 
-## Repository Management
+database.default.hostname = localhost
+database.default.database = db_blog
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### 4. Buat Database
+Buka phpMyAdmin dan buat database:
+```sql
+CREATE DATABASE db_blog;
+```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+### 5. Jalankan Migration
+```bash
+php spark migrate
+```
 
-## Server Requirements
+### 6. Jalankan Seeder
+```bash
+php spark db:seed UserSeeder
+php spark db:seed CategorySeeder
+```
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+### 7. Buat Folder Upload
+```bash
+mkdir -p public/uploads/thumbnails
+```
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+### 8. Jalankan Server
+```bash
+php spark serve
+```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+Akses di browser: `http://localhost:8080`
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+---
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-"# Web-Blog-CI4" 
-"# Web-Blog-CI4" 
+## 👤 Akun Admin Default
+
+| Field | Value |
+|-------|-------|
+| Email | admin@blog.com |
+| Password | admin123 |
+
+---
+
+## 📁 Struktur Project
+
+```
+project3/
+├── app/
+│   ├── Controllers/
+│   │   ├── Admin/
+│   │   │   ├── DashboardController.php
+│   │   │   ├── PostController.php
+│   │   │   └── CategoryController.php
+│   │   ├── AuthController.php
+│   │   └── BlogController.php
+│   ├── Models/
+│   │   ├── UserModel.php
+│   │   ├── PostModel.php
+│   │   └── CategoryModel.php
+│   ├── Views/
+│   │   ├── admin/
+│   │   │   ├── layout.php
+│   │   │   ├── dashboard.php
+│   │   │   ├── posts/
+│   │   │   └── categories/
+│   │   ├── auth/
+│   │   │   └── login.php
+│   │   └── blog/
+│   │       ├── layout.php
+│   │       ├── index.php
+│   │       └── detail.php
+│   ├── Database/
+│   │   ├── Migrations/
+│   │   └── Seeds/
+│   └── Filters/
+│       └── AuthFilter.php
+└── public/
+    └── uploads/
+        └── thumbnails/
+```
+
+---
+
+## 🎥 Demo Video
+
+[Link Google Drive](https://drive.google.com/your-link-here)
+
+---
+
+## 👨‍💻 Identitas Mahasiswa
+
+| Field | Keterangan |
+|-------|-----------|
+| **Nama** | Hanan Ahmad Alfaruqi |
+| **NIM** | 20260015 |
+| **Mata Kuliah** | Pengembangan Aplikasi Web Framework |
+| **Framework** | CodeIgniter 4 |
+| **GitHub** | [hananalfaruq](https://github.com/hananalfaruq) |
