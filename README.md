@@ -147,7 +147,7 @@ project3/
 
 ## 🎥 Demo Video
 
-[Link Google Drive](https://drive.google.com/your-link-here)
+[Link Google Drive]([https://drive.google.com/your-link-here](https://drive.google.com/file/d/1UJhSOjEipUHz7_eiN_7Gj8AdFVHJeLuk/view?usp=sharing))
 
 ---
 
@@ -156,7 +156,7 @@ project3/
 | Field | Keterangan |
 |-------|-----------|
 | **Nama** | Hanan Ahmad Alfaruqi |
-| **NIM** | 20260015 |
+| **NIM** | 23260015 |
 | **Mata Kuliah** | Pengembangan Aplikasi Web Framework |
 | **Framework** | CodeIgniter 4 |
 | **GitHub** | [hananalfaruq](https://github.com/hananalfaruq) |
