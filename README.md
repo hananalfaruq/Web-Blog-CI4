@@ -147,7 +147,8 @@ project3/
 
 ## 🎥 Demo Video
 
-[Link Google Drive](((https://drive.google.com/file/d/1UJhSOjEipUHz7_eiN_7Gj8AdFVHJeLuk/view?usp=sharing)))
+[Link Google Drive]
+https://drive.google.com/file/d/1UJhSOjEipUHz7_eiN_7Gj8AdFVHJeLuk/view?usp=sharing
 
 ---
 
